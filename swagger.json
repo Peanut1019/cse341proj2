@@ -5,10 +5,9 @@
       "description": "Birds API",
       "version": "1.0.0"
     },
-    "host": "localhost:3030",
+    "host": "https://cse341proj2-ytmi.onrender.com",
     "basePath": "/",
     "schemes": [
-      "http",
         "https"
     ],
     "paths": {
