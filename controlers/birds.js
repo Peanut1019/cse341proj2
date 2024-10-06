@@ -10,6 +10,9 @@ const getAll = async (req, res) => {
 }
 
 const getOne = async (re, res) => {
+    if(!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must be a valid ID to work!');
+    }
     const birdId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db('the_second').collection('birds').find({_id: birdId});
     result.toArray().then((birds) => {
@@ -35,6 +38,9 @@ const createBird = async (req, res) => {
 }
 
 const updateBird = async (req, res) => {
+    if(!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must be a valid ID to work!');
+    }
     const birdId = new ObjectId(req.params.id);
     const bird = {
         commonName: req.body.commonName,
@@ -52,6 +58,10 @@ const updateBird = async (req, res) => {
 }
 
 const deleteBird = async (req, res) => {
+    if(!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must be a valid ID to work!');
+    }
+    const birdId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db('the_second').collection('birds').remove({_id: birdId}, true);
     if (response.deletedCount > 0) {
         res.status(204).send();
