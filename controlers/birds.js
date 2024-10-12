@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
     })
 }
 
-const getOne = async (re, res) => {
+const getOne = async (req, res) => {
     if(!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must be a valid ID to work!');
     }
